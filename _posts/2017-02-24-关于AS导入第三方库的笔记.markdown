@@ -1,0 +1,35 @@
+---
+layout: post
+title:  "关于AS引入第三方库的笔记"
+date:   2017-02-24 23:43:40 +0800
+categories: AS
+---
+
+1.应用第三方库的时候，要保证库的build.gradle里面的编译信息:
+
+
+{% highlight ruby %} 
+def show
+		 inSdkVersion 24
+        targetSdkVersion 24
+        versionCode 1
+      要跟应用的原项目的信息相同
+end
+{% endhighlight %}
+2.由于第三方库是作为一个库被项目引用，所以库的根目录必须要有相应的build.gradle文件，并且注意 plugin是 library ：apply plugin: ‘com.android.application’，因为这个application的标志，系统会将这个作为apk的编码项目。
+而项目的是 apply plugin: 'com.android.library'
+3.引入第三方库，步骤如下:
+
+{% highlight ruby %}
+def show
+a.在项目的setting.gradle添加相应的库路径
+include ‘:库的名字' （如果有路径，添加路径，如果跟 app目录相同，这样就行 或者
+include ':库的名字'
+project(':库的名字').projectDir = new File(settingsDir, ‘../../../’)）
+
+b.在Module的build.gradle的dependencies添加
+dependencies {
+    compile project(':库的名字')
+}
+end
+{% endhighlight %}
