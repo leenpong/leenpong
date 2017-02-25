@@ -1,0 +1,52 @@
+---
+layout: post
+title: Mac搭建Jekyll
+---
+本文是利用jekyll在Mac下搭建创建网站然后把网站托管给github的教程。
+
+
+1.安装[jekyll] [first-site] http://jekyll.com.cn/
+{% highlight ruby %}
+def show
+
+ $ gem install jekyll
+~ $ jekyll new my-awesome-site
+~ $ cd my-awesome-site
+~/my-awesome-site $ jekyll serve
+
+end
+{% endhighlight %}
+# => Now browse to http://localhost:4000
+备注：有些会遇到过bundle找不到的情况，只需要安装bundle就行 :
+
+sudo gem install bundle
+
+2.由于是要托管在github上面，所以要创建一个github帐号，[网站][sec-site]
+
+3.点击NEW repository,创建一个repository(注意：名字要xxx.github.io.git格式)然后将其colne到本地 如：
+
+git clone https://github.com/yourname/yourname.github.io.git
+
+4.将jekyll生成的yourblogname文件夹下的所有文件都copy到clone下来的yourname.github.io.git下面
+
+5.进入到yourname.github.io.git文件夹下面 ：
+
+git status #会看到所有的未提交的文件
+git add . #将所有文件添加到git本地库
+git commit -m “commit message”#添加提交信息
+git push origin master #将提交同步到github创库里
+
+
+
+以上是本人的笔记，比较简单，有不对的地方请大家指正。
+
+附上两个很好的参考博客：
+
+[Jekyll + Github 搭建属于你的静态博客][third-site]  
+[Jekyll和Github搭建个人静态博客][fourth-site]
+
+
+[first-site]: http://jekyll.com.cn/
+[sec-site]:   https://github.com/
+[third-site]: https://bigballon.github.io/posts/jekyll-github.html
+[fourth-site]: http://pwnny.cn/original/2016/06/26/MakeBlog.html
