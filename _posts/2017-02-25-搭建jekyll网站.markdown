@@ -5,11 +5,11 @@ title: Mac搭建Jekyll
 本文是利用jekyll在Mac下搭建创建网站然后把网站托管给github的教程。
 
 
-1.安装[jekyll] [first-site] http://jekyll.com.cn/
+1.安装[jekyll] [first-site]
 {% highlight ruby %}
 def show
 
- $ gem install jekyll
+$ gem install jekyll
 ~ $ jekyll new my-awesome-site
 ~ $ cd my-awesome-site
 ~/my-awesome-site $ jekyll serve
@@ -42,7 +42,7 @@ git status #会看到所有的未提交的文件
 git add . #将所有文件添加到git本地库
 git commit -m “commit message”#添加提交信息
 git push origin master #将提交同步到github创库里
-
+..
 end
 {% endhighlight %}
 
